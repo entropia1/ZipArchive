@@ -537,7 +537,8 @@
             }
         }
     } while (ret==UNZ_OK && ret!=UNZ_END_OF_LIST_OF_FILE);
-    
+
+    (void) success;
     NSDictionary *resultDictionary = [NSDictionary dictionaryWithDictionary:fileDictionary];
     return resultDictionary;
 }

@@ -1110,6 +1110,7 @@ local int unz64local_GetCurrentFileInfoInternal (unzFile file,
         lSeek+=file_info.size_file_comment;
 
 
+    (void) lSeek;
     if ((err==UNZ_OK) && (pfile_info!=NULL))
         *pfile_info=file_info;
 
@@ -1539,8 +1540,10 @@ extern int ZEXPORT unzOpenCurrentFile3 (unzFile file, int* method,
         (s->cur_file_info.compression_method!=Z_BZIP2ED) &&
 /* #endif */
         (s->cur_file_info.compression_method!=Z_DEFLATED))
+    {
 
-        err=UNZ_BADZIPFILE;
+        //err=UNZ_BADZIPFILE;
+    }
 
     pfile_in_zip_read_info->crc32_wait=s->cur_file_info.crc;
     pfile_in_zip_read_info->crc32=0;
